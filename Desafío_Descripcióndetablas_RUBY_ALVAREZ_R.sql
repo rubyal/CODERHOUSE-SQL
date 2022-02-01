@@ -11,6 +11,24 @@ weight int);
 
 select * from athlete;
 
+create table sport(
+id_sport int primary key,
+sport varchar (20),
+id_athlete int,
+foreign key (id_athlete) references athlete(id_athlete));
+
+select * from sport;
+
+create table event(
+id_event int primary key,
+event varchar (20),
+id_sport int,
+id_athlete int,
+foreign key (id_sport) references sport(id_sport),
+foreign key (id_athlete) references athlete(id_athlete));
+
+select * from event;
+
 create table NOC(
 id_noc int primary key, 
 noc varchar (10),
@@ -19,14 +37,6 @@ id_athlete int,
 foreign key (id_athlete) references athlete(id_athlete));
 
 select * from NOC;
-
-create table event(
-id_event int primary key,
-event varchar (50),
-id_athlete int,
-foreign key (id_athlete) references athlete(id_athlete));
-
-select * from event;
 
 create table season(
 id_season int primary key,
@@ -51,13 +61,6 @@ foreign key (id_athlete) references athlete(id_athlete));
 
 select * from games;
 
-create table sport(
-id_sport int primary key,
-sport varchar (20),
-id_athlete int,
-foreign key (id_athlete) references athlete(id_athlete));
-
-select * from sport;
 
 create table city(
 id_city int primary key,
@@ -73,6 +76,6 @@ medal varchar (10),
 id_athlete int,
 foreign key (id_athlete) references athlete(id_athlete));
 
-select * from city;
+select * from medal;
 
 
