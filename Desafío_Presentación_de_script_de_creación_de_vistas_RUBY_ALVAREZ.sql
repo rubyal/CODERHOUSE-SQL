@@ -1,4 +1,4 @@
-USE juegosolimpicos1;
+USE juegosolimpicos;
 
 CREATE VIEW medaloro_athlete AS select a.name as name, h.id_medal AS medal_oro FROM hechosathlete h 
 LEFT JOIN athlete a ON h.id_athlete = a.id_athlete WHERE id_medal = 2;
