@@ -44,28 +44,26 @@ select * from NOC;
 create table season(
 id_season int,
 season varchar (20),
-PRIMARY KEY (season));
+PRIMARY KEY (id_season));
 
 select * from season;
 
 create table year(
 id_year int,
 year int,
-PRIMARY KEY (year));
+PRIMARY KEY (id_year));
 
 select * from year;
 
 create table games(
 id_games int,
-year int,
-season varchar (20),
+id_year int,
+id_season int,
 PRIMARY KEY (id_games),
-foreign key (year) references year(year),
-foreign key (season) references season(season)
-);
+FOREIGN KEY(id_year) REFERENCES year(id_year),
+FOREIGN KEY(id_season) REFERENCES season(id_season));
 
 select * from games;
-
 
 create table city(
 id_city int,
@@ -86,8 +84,8 @@ select * from medal;
 create table hechosathlete(
 id_hechos int not null,
 id_athlete int not null, 
-year int,
-season varchar (20),
+id_year int,
+id_season int,
 id_noc int,
 id_games int,
 id_city int,
@@ -96,8 +94,8 @@ id_event int,
 id_medal int,
 PRIMARY KEY(id_hechos),
 FOREIGN KEY(id_athlete) REFERENCES athlete(id_athlete),
-FOREIGN KEY(year) REFERENCES year(year),
-FOREIGN KEY(season) REFERENCES season(season),
+FOREIGN KEY(id_year) REFERENCES year(id_year),
+FOREIGN KEY(id_season) REFERENCES season(id_season),
 FOREIGN KEY(id_noc) REFERENCES NOC(id_noc),
 FOREIGN KEY(id_games) REFERENCES games(id_games),
 FOREIGN KEY(id_city) REFERENCES city(id_city),
